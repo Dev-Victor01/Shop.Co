@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    >
+    <link rel="stylesheet" href="./output.css">
+    <title>Cart</title>
+</head>
+<body>
+    <header class="sticky top-0 z-50">
+
+        <!-- Announcement -->
+        <div class="bg-black flex justify-center py-3 px-4">
+            <h3 class="text-xs text-white text-center">
+                Sign up and get 20% off to your first order.
+                <span class="underline cursor-pointer">Sign Up Now</span>
+            </h3>
+        </div>
+
+        <!-- Navbar -->
+        <div class="relative flex items-center justify-between px-5 md:px-10 py-4 bg-white">
+
+            <!-- Mobile Menu Button -->
+            <button
+                class="md:hidden text-2xl"
+                id="menu-btn"
+                aria-label="Open menu"
+                aria-expanded="false"
+                type="button"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
+            <div>
+                <img
+                    src="/src/asset/images/home/SHOP.CO.png"
+                    alt="SHOP.CO logo"
+                    class="w-32 md:w-auto"
+                >
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-6">
+
+                <ul class="flex gap-4 items-center">
+
+                    <li>
+                        <a href="#" class="hover:text-gray-500">
+                            Shop
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="hover:text-gray-500">
+                            On Sale
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="hover:text-gray-500">
+                            New Arrivals
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="hover:text-gray-500">
+                            Brands
+                        </a>
+                    </li>
+
+                </ul>
+
+                <!-- Search -->
+                <label class="relative flex items-center">
+
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 text-gray-400"></i>
+
+                    <input
+                        type="search"
+                        placeholder="Search for products..."
+                        class="w-80 h-10 rounded-full border border-gray-300 py-2 pl-10 pr-4 bg-[#F0F0F0] outline-none"
+                    >
+
+                </label>
+
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div
+                id="mobile-menu"
+                class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg"
+            >
+                <ul class="flex flex-col gap-4 p-5">
+
+                    <li>
+                        <a href="#" class="block hover:text-gray-500">
+                            Shop
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="block hover:text-gray-500">
+                            On Sale
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="block hover:text-gray-500">
+                            New Arrivals
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="block hover:text-gray-500">
+                            Brands
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!-- Icons -->
+            <div class="flex items-center gap-3">
+
+                <div class="relative">
+                    <i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+                    <span
+                        id="cart-count"
+                        class="hidden absolute -top-2 -right-2 min-w-5 h-5 px-1.5 rounded-full bg-red-500 text-white text-[10px] font-bold inline-flex items-center justify-center"
+                    >
+                        0
+                    </span>
+                </div>
+
+                <i class="fa-regular fa-circle-user text-xl md:text-2xl"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <section class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-4xl font-bold mb-8">YOUR CART</h1>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+
+        <!-- Cart Items -->
+        <div class="lg:col-span-2 border rounded-2xl p-4">
+
+            <!-- Item -->
+            <div class="flex justify-between items-center border-b pb-4 mb-4">
+                <div class="flex gap-4">
+                    <img src="./asset/images/product/image 1 (1).png"
+                        class="w-24 h-24 object-cover rounded-lg">
+
+                    <div>
+                        <h3 class="font-bold">Gradient Graphic T-shirt</h3>
+                        <p class="text-sm text-gray-500">Size: Large</p>
+                        <p class="text-sm text-gray-500">Color: White</p>
+                        <p class="font-bold text-xl mt-2">$145</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-end gap-4">
+                    <button class="text-red-500 remove-btn">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                    <div
+                        class="flex items-center bg-gray-100 rounded-full px-4 py-2 gap-4">
+                        <button class="minus">-</button>
+                        <span class="qty">1</span>
+                        <button class="plus">+</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Order Summary -->
+        <div class="border rounded-2xl p-6 h-fit">
+            <h2 class="text-xl font-bold mb-6">Order Summary</h2>
+
+            <div class="space-y-4">
+                <div class="flex justify-between">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$565</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span>Discount (-20%)</span>
+                    <span class="text-red-500" id="discount">-$113</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span>Delivery Fee</span>
+                    <span>$15</span>
+                </div>
+
+                <hr>
+
+                <div class="flex justify-between font-bold text-xl">
+                    <span>Total</span>
+                    <span id="total">$467</span>
+                </div>
+            </div>
+
+            <div class="flex gap-2 mt-6">
+                <input type="text"
+                    placeholder="Add promo code"
+                    class="flex-1 bg-gray-100 rounded-full px-4 py-3 outline-none">
+
+                <button
+                    class="bg-black text-white px-6 rounded-full">
+                    Apply
+                </button>
+            </div>
+
+            <button
+                class="w-full bg-black text-white py-4 rounded-full mt-6">
+                Go to Checkout →
+            </button>
+        </div>
+
+    </div>
+    </section>
+
+    <footer class="bg-[#f2f2f2] mt-20">
+
+        <!-- Newsletter -->
+        <div class="max-w-6xl mx-auto px-5">
+
+            <div class="bg-black rounded-2xl px-5 py-8 md:px-12 lg:px-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 relative -top-16">
+
+                <h2 class="text-white text-3xl md:text-5xl leading-tight font-black">
+                    STAY UPTO DATE ABOUT<br class="hidden sm:block">
+                    OUR LATEST OFFERS
+                </h2>
+
+                <form
+                    id="newsletterForm"
+                    class="w-full lg:w-[300px] flex flex-col gap-3"
+                >
+
+                    <div class="bg-white rounded-full h-11 px-4 flex items-center">
+
+                        <i class="fa-regular fa-envelope text-gray-400 mr-3"></i>
+
+                        <input
+                            id="newsletterEmail"
+                            type="email"
+                            placeholder="Enter your email address"
+                            class="w-full outline-none text-sm text-gray-700 bg-transparent"
+                            required
+                        >
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="bg-white hover:bg-gray-200 transition rounded-full h-11 text-sm font-medium"
+                    >
+                        Subscribe to Newsletter
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer Content -->
+        <div class="max-w-6xl mx-auto px-5 -mt-7 pb-8">
+
+            <div class="grid grid-cols-2 gap-x-8 gap-y-8 lg:grid-cols-5 lg:gap-8">
+
+                <!-- SHOP.CO -->
+                <div class="col-span-2 lg:col-span-1">
+
+                    <h2 class="text-3xl font-black mb-3">
+                        SHOP.CO
+                    </h2>
+
+                    <p class="text-gray-500 text-sm leading-5 max-w-[290px]">
+                        We have clothes that suits your style and which you're
+                        proud to wear. From women to men.
+                    </p>
+
+                    <div class="flex items-center gap-3 mt-6">
+
+                        <a href="#" class="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs hover:bg-black hover:text-white transition">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+
+                        <a href="#" class="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center text-xs">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="#" class="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs hover:bg-black hover:text-white transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" class="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs hover:bg-black hover:text-white transition">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Company -->
+                <div>
+
+                    <h3 class="text-xs tracking-[0.2em] font-medium mb-4">
+                        COMPANY
+                    </h3>
+
+                    <ul class="space-y-3 text-sm text-gray-500">
+
+                        <li><a href="#" class="hover:text-black">About</a></li>
+                        <li><a href="#" class="hover:text-black">Features</a></li>
+                        <li><a href="#" class="hover:text-black">Works</a></li>
+                        <li><a href="#" class="hover:text-black">Career</a></li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Help -->
+                <div>
+
+                    <h3 class="text-xs tracking-[0.2em] font-medium mb-4">
+                        HELP
+                    </h3>
+
+                    <ul class="space-y-3 text-sm text-gray-500">
+
+                        <li><a href="#" class="hover:text-black">Customer Support</a></li>
+                        <li><a href="#" class="hover:text-black">Delivery Details</a></li>
+                        <li><a href="#" class="hover:text-black">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-black">Privacy Policy</a></li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- FAQ -->
+                <div>
+
+                    <h3 class="text-xs tracking-[0.2em] font-medium mb-4">
+                        FAQ
+                    </h3>
+
+                    <ul class="space-y-3 text-sm text-gray-500">
+
+                        <li><a href="#" class="hover:text-black">Account</a></li>
+                        <li><a href="#" class="hover:text-black">Manage Deliveries</a></li>
+                        <li><a href="#" class="hover:text-black">Orders</a></li>
+                        <li><a href="#" class="hover:text-black">Payment</a></li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Resources -->
+                <div>
+
+                    <h3 class="text-xs tracking-[0.2em] font-medium mb-4">
+                        RESOURCES
+                    </h3>
+
+                    <ul class="space-y-3 text-sm text-gray-500">
+
+                        <li><a href="#" class="hover:text-black">Free eBook</a></li>
+                        <li><a href="#" class="hover:text-black">Development Tutorial</a></li>
+                        <li><a href="#" class="hover:text-black">How to - Blog</a></li>
+                        <li><a href="#" class="hover:text-black">Youtube Playlist</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom -->
+            <div class="border-t border-gray-300 mt-8 pt-4 flex flex-col items-center lg:flex-row lg:justify-between gap-4">
+
+                <p class="text-gray-500 text-xs text-center">
+                    Shop.co © 2000-2023, All Rights Reserved
+                </p>
+
+                <div class="flex items-center justify-center gap-2">
+
+                    <div class="bg-white rounded-md px-2 py-1.5 text-[9px] font-bold text-blue-700">
+                        VISA
+                    </div>
+
+                    <div class="bg-white rounded-md px-2 py-1.5 text-[9px] font-bold">
+                        <span class="text-red-500">●</span>
+                        <span class="text-yellow-500">●</span>
+                    </div>
+
+                    <div class="bg-white rounded-md px-2 py-1.5 text-[9px] font-bold text-blue-700">
+                        PayPal
+                    </div>
+
+                    <div class="bg-white rounded-md px-2 py-1.5 text-[9px] font-bold">
+                        Pay
+                    </div>
+
+                    <div class="bg-white rounded-md px-2 py-1.5 text-[9px] font-bold">
+                        <span class="text-blue-500">G</span> Pay
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="./cart.js"></script>
+</body>
+</html>
