@@ -2,115 +2,144 @@
 // MOBILE MENU
 // =====================================================
 
-const menu = document.getElementById("menu-btn");
+const menuBtn = document.getElementById("menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 
-let cartCount = 0;
-
-function updateCartCount() {
-    const cartBadge = document.getElementById("cart-count");
-
-    if (!cartBadge) return;
-
-    cartBadge.textContent = cartCount;
-
-    if (cartCount === 0) {
-        cartBadge.classList.add("hidden");
-    } else {
-        cartBadge.classList.remove("hidden");
-    }
-}
-
-function addProductToCart(productName, productPrice) {
-    cartCount++;
-
-    updateCartCount();
-
-    (`${productName} added to cart.`);
-} updateCartCount();
-
-
-if (menu && mobileMenu) {
-
-    menu.addEventListener("click", function () {
-
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
 
-        const isOpen =
-            !mobileMenu.classList.contains("hidden");
+        const isOpen = !mobileMenu.classList.contains("hidden");
 
-        menu.setAttribute("aria-expanded", isOpen);
+        menuBtn.innerHTML = isOpen
+            ? '<i class="fa-solid fa-xmark"></i>'
+            : '<i class="fa-solid fa-bars"></i>';
 
-        const icon = menu.querySelector("i");
-
-        if (isOpen) {
-
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-xmark");
-
-        } else {
-
-            icon.classList.remove("fa-xmark");
-            icon.classList.add("fa-bars");
-
-        }
-
+        menuBtn.setAttribute("aria-expanded", isOpen);
     });
-
 }
 
-updateCartCount();
-
 
 // =====================================================
-// NEW ARRIVALS PRODUCTS
+// PRODUCT DATA
 // =====================================================
 
-const products = [
-
+const newArrivals = [
     {
+        id: "tshirt-tape",
         name: "T-shirt with Tape Details",
         image: "./asset/images/home/image 7-Photoroom.png",
-        price: "$120",
+        price: 120,
+        oldPrice: null,
+        discount: null,
         rating: 4.5,
-        reviews: 45
+        reviews: 45,
+        description:
+            "A stylish everyday t-shirt with tape details, designed for comfort and a modern casual look."
     },
 
     {
+        id: "skinny-jeans",
         name: "Skinny Fit Jeans",
         image: "./asset/images/home/image 8-Photoroom.png",
-        price: "$240",
-        oldPrice: "$260",
+        price: 240,
+        oldPrice: 260,
         discount: "-20%",
         rating: 3.5,
-        reviews: 35
+        reviews: 35,
+        description:
+            "A modern pair of skinny fit jeans designed for a clean, comfortable and stylish everyday look."
     },
 
     {
+        id: "checkered-shirt",
         name: "Checkered Shirt",
         image: "./asset/images/home/image 9-Photoroom.png",
-        price: "$180",
+        price: 180,
+        oldPrice: null,
+        discount: null,
         rating: 4.5,
-        reviews: 45
+        reviews: 45,
+        description:
+            "A classic checkered shirt that combines comfort and everyday style."
     },
 
     {
+        id: "striped-tshirt",
         name: "Sleeve Striped T-shirt",
         image: "./asset/images/home/image 10-Photoroom.png",
-        price: "$130",
-        oldPrice: "$160",
+        price: 130,
+        oldPrice: 160,
         discount: "-30%",
         rating: 4.5,
-        reviews: 25
+        reviews: 25,
+        description:
+            "A comfortable striped t-shirt made for everyday outfits and casual occasions."
     }
-
 ];
-
-let visibleProducts = 4;
 
 
 // =====================================================
-// CREATE STAR RATING
+// TOP SELLING
+// =====================================================
+
+const topSelling = [
+    {
+        id: "vertical-striped-shirt",
+        name: "Vertical Striped Shirt",
+        image: "./asset/images/home/image 7 (1)-Photoroom.png",
+        price: 212,
+        oldPrice: 232,
+        discount: "-20%",
+        rating: 5,
+        reviews: 42,
+        description:
+            "A stylish vertical striped shirt with a clean and modern design."
+    },
+
+    {
+        id: "courage-graphic-tshirt",
+        name: "Courage Graphic T-shirt",
+        image: "./asset/images/home/image 8 (1)-Photoroom.png",
+        price: 145,
+        oldPrice: null,
+        discount: null,
+        rating: 4,
+        reviews: 38,
+        description:
+            "A bold graphic t-shirt designed for a relaxed and confident everyday look."
+    },
+
+    {
+        id: "bermuda-shorts",
+        name: "Loose Fit Bermuda Shorts",
+        image: "./asset/images/home/image 9 (1)-Photoroom.png",
+        price: 80,
+        oldPrice: null,
+        discount: null,
+        rating: 3,
+        reviews: 27,
+        description:
+            "Comfortable loose-fit Bermuda shorts perfect for casual everyday wear."
+    },
+
+    {
+        id: "faded-skinny-jeans",
+        name: "Faded Skinny Jeans",
+        image: "./asset/images/home/image 10 (1)-Photoroom.png",
+        price: 210,
+        oldPrice: null,
+        discount: null,
+        rating: 4.5,
+        reviews: 51,
+        description:
+            "Modern faded skinny jeans with a comfortable fit and stylish finish."
+    }
+];
+
+
+// =====================================================
+// CREATE STARS
 // =====================================================
 
 function createStars(rating) {
@@ -119,381 +148,81 @@ function createStars(rating) {
 
     for (let i = 1; i <= 5; i++) {
 
-        if (i <= rating) {
+        if (rating >= i) {
 
-            stars += `
-                <span class="text-yellow-400">★</span>
-            `;
+            stars += '<i class="fa-solid fa-star"></i>';
+
+        } else if (rating >= i - 0.5) {
+
+            stars += '<i class="fa-solid fa-star-half-stroke"></i>';
 
         } else {
 
-            stars += `
-                <span class="text-gray-300">★</span>
-            `;
-
+            stars += '<i class="fa-regular fa-star"></i>';
         }
-
     }
 
     return stars;
-
 }
 
 
 // =====================================================
-// DISPLAY NEW ARRIVALS
+// PRODUCT CARD
 // =====================================================
 
-function displayProducts() {
+function createProductCard(product) {
 
-    const container =
-        document.getElementById("productContainer");
+    return `
+        <article class="group">
 
-    if (!container) return;
+            <!-- Product Image -->
+            <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-square">
 
-    container.innerHTML = "";
-
-    const productsToShow =
-        products.slice(0, visibleProducts);
-
-    productsToShow.forEach(product => {
-
-        const productCard =
-            document.createElement("div");
-
-        productCard.className =
-            "group cursor-pointer";
-
-        productCard.innerHTML = `
-
-            <!-- Image -->
-
-            <div
-                class="
-                    bg-[#f2f2f2]
-                    rounded-xl
-                    h-60
-                    md:h-[280px]
-                    overflow-hidden
-                    flex
-                    items-center
-                    justify-center
-                "
-            >
-
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                    class="
-                        w-full
-                        h-full
-                        object-cover
-                        group-hover:scale-105
-                        transition
-                        duration-500
-                    "
+                <a
+                    href="./product.html?id=${encodeURIComponent(product.id)}"
+                    class="block w-full h-full"
                 >
 
-            </div>
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                    >
 
-
-            <!-- Name -->
-
-            <h3
-                class="
-                    text-[15px]
-                    md:text-xl
-                    font-semibold
-                    text-black
-                    mt-2
-                    truncate
-                "
-            >
-                ${product.name}
-            </h3>
-
-
-            <!-- Rating -->
-
-            <div class="flex items-center gap-1 mt-1">
-
-                <div class="text-xl tracking-tight">
-                    ${createStars(product.rating)}
-                </div>
-
-                <span class="text-sm text-gray-500">
-                    ${product.rating}/5
-                </span>
-
-            </div>
-
-
-            <!-- Price -->
-
-            <div class="flex items-center gap-2 mt-1 flex-wrap">
-
-                <span
-                    class="
-                        text-lg
-                        md:text-xl
-                        font-bold
-                    "
-                >
-                    ${product.price}
-                </span>
+                </a>
 
                 ${
-                    product.oldPrice
+                    product.discount
                         ? `
                             <span
-                                class="
-                                    text-sm
-                                    md:text-lg
-                                    text-gray-400
-                                    line-through
-                                "
-                            >
-                                ${product.oldPrice}
-                            </span>
-
-                            <span
-                                class="
-                                    text-xs
-                                    font-medium
-                                    text-red-500
-                                    bg-red-100
-                                    rounded-full
-                                    px-2
-                                    py-1
-                                "
+                                class="absolute top-3 right-3 bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-medium"
                             >
                                 ${product.discount}
                             </span>
                         `
                         : ""
                 }
-
-            </div>
-
-            <button
-                type="button"
-                class="add-to-cart-btn mt-4 w-full rounded-full bg-black text-white py-2.5 px-4 text-sm font-medium hover:bg-gray-800 transition"
-                data-name="${product.name}"
-                data-price="${product.price}"
-            >
-                Add to Cart
-            </button>
-
-        `;
-
-        const addToCartButton = productCard.querySelector(".add-to-cart-btn");
-        addToCartButton?.addEventListener("click", function () {
-            addProductToCart(product.name, product.price);
-        });
-
-        container.appendChild(productCard);
-
-    });
-
-}
-
-
-// =====================================================
-// NEW ARRIVALS - VIEW ALL
-// =====================================================
-
-const viewAllBtn =
-    document.getElementById("viewAllBtn");
-
-if (viewAllBtn) {
-
-    viewAllBtn.addEventListener("click", function () {
-
-        if (visibleProducts < products.length) {
-
-            visibleProducts =
-                products.length;
-
-            viewAllBtn.textContent =
-                "Show Less";
-
-        } else {
-
-            visibleProducts = 4;
-
-            viewAllBtn.textContent =
-                "View All";
-
-        }
-
-        displayProducts();
-
-    });
-
-}
-
-
-// Display products
-displayProducts();
-
-
-// =====================================================
-// TOP SELLING PRODUCTS
-// =====================================================
-
-const topSellingProducts = [
-
-    {
-        name: "Vertical Striped Shirt",
-        image: "./asset/images/home/image 7 (1)-Photoroom.png",
-        price: "$212",
-        oldPrice: "$232",
-        discount: "-20%",
-        rating: 5.0
-    },
-
-    {
-        name: "Courage Graphic T-shirt",
-        image: "./asset/images/home/image 8 (1)-Photoroom.png",
-        price: "$145",
-        rating: 4.0
-    },
-
-    {
-        name: "Loose Fit Bermuda Shorts",
-        image: "./asset/images/home/image 9 (1)-Photoroom.png",
-        price: "$80",
-        rating: 3.0
-    },
-
-    {
-        name: "Faded Skinny Jeans",
-        image: "./asset/images/home/image 10 (1)-Photoroom.png",
-        price: "$210",
-        rating: 4.5
-    }
-
-];
-
-let topSellingVisible = 4;
-
-
-// =====================================================
-// TOP SELLING STARS
-// =====================================================
-
-function topSellingStars(rating) {
-
-    let stars = "";
-
-    for (let i = 1; i <= 5; i++) {
-
-        if (i <= rating) {
-
-            stars += `
-                <span class="text-yellow-400">★</span>
-            `;
-
-        } else {
-
-            stars += `
-                <span class="text-gray-300">★</span>
-            `;
-
-        }
-
-    }
-
-    return stars;
-
-}
-
-
-// =====================================================
-// DISPLAY TOP SELLING
-// =====================================================
-
-function displayTopSelling() {
-
-    const container =
-        document.getElementById("topSellingContainer");
-
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    const productsToShow =
-        topSellingProducts.slice(
-            0,
-            topSellingVisible
-        );
-
-    productsToShow.forEach(product => {
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "group cursor-pointer";
-
-        card.innerHTML = `
-
-            <!-- Product Image -->
-
-            <div
-                class="
-                    bg-[#f2f0f0]
-                    rounded-2xl
-                    h-60
-                    md:h-[280px]
-                    overflow-hidden
-                    flex
-                    items-center
-                    justify-center
-                "
-            >
-
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                    class="
-                        w-full
-                        h-full
-                        object-contain
-                        group-hover:scale-105
-                        transition
-                        duration-500
-                    "
-                >
 
             </div>
 
 
             <!-- Product Name -->
-
-            <h3
-                class="
-                    text-[15px]
-                    md:text-xl
-                    font-semibold
-                    text-black
-                    mt-2
-                    truncate
-                "
+            <a
+                href="./product.html?id=${encodeURIComponent(product.id)}"
+                class="block mt-4 font-bold text-sm sm:text-base hover:underline"
             >
                 ${product.name}
-            </h3>
+            </a>
 
 
             <!-- Rating -->
-
             <div class="flex items-center gap-2 mt-2">
 
-                <div class="text-2xl">
-                    ${topSellingStars(product.rating)}
+                <div class="flex gap-1 text-yellow-400 text-sm">
+                    ${createStars(product.rating)}
                 </div>
 
-                <span class="text-sm md:text-lg text-gray-600">
+                <span class="text-xs text-gray-500">
                     ${product.rating}/5
                 </span>
 
@@ -501,47 +230,17 @@ function displayTopSelling() {
 
 
             <!-- Price -->
+            <div class="flex items-center gap-2 mt-2 flex-wrap">
 
-            <div
-                class="
-                    flex
-                    items-center
-                    gap-2
-                    mt-2
-                    flex-wrap
-                "
-            >
-
-                <span class="text-lg md:text-xl font-bold">
-                    ${product.price}
+                <span class="font-bold text-lg">
+                    $${product.price}
                 </span>
 
                 ${
                     product.oldPrice
                         ? `
-                            <span
-                                class="
-                                    text-sm
-                                    md:text-base
-                                    font-semibold
-                                    text-gray-400
-                                    line-through
-                                "
-                            >
-                                ${product.oldPrice}
-                            </span>
-
-                            <span
-                                class="
-                                    text-xs
-                                    text-red-500
-                                    bg-red-100
-                                    rounded-full
-                                    px-3
-                                    py-1
-                                "
-                            >
-                                ${product.discount}
+                            <span class="text-gray-400 line-through">
+                                $${product.oldPrice}
                             </span>
                         `
                         : ""
@@ -549,173 +248,238 @@ function displayTopSelling() {
 
             </div>
 
+
+            <!-- Add To Cart -->
             <button
                 type="button"
-                class="add-to-cart-btn mt-4 w-full rounded-full bg-black text-white py-2.5 px-4 text-sm font-medium hover:bg-gray-800 transition"
-                data-name="${product.name}"
-                data-price="${product.price}"
+                class="add-to-cart-btn mt-4 w-full rounded-full bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-800"
+                data-product-id="${product.id}"
             >
                 Add to Cart
             </button>
 
-        `;
-
-        const addToCartButton = card.querySelector(".add-to-cart-btn");
-        addToCartButton?.addEventListener("click", function () {
-            addProductToCart(product.name, product.price);
-        });
-
-        container.appendChild(card);
-
-    });
-
+        </article>
+    `;
 }
 
 
 // =====================================================
-// TOP SELLING - VIEW ALL
+// ADD TO CART BUTTONS
 // =====================================================
 
-const topSellingViewBtn =
-    document.getElementById(
-        "topSellingViewBtn"
-    );
+function setupAddToCartButtons() {
 
-if (topSellingViewBtn) {
+    const buttons = document.querySelectorAll(".add-to-cart-btn");
 
-    topSellingViewBtn.addEventListener(
-        "click",
-        function () {
+    buttons.forEach((button) => {
 
-            if (
-                topSellingVisible <
-                topSellingProducts.length
-            ) {
-
-                topSellingVisible =
-                    topSellingProducts.length;
-
-                topSellingViewBtn.textContent =
-                    "Show Less";
-
-            } else {
-
-                topSellingVisible = 4;
-
-                topSellingViewBtn.textContent =
-                    "View All";
-
-            }
-
-            displayTopSelling();
-
-        }
-    );
-
-}
-
-
-// Display Top Selling
-displayTopSelling();
-
-
-// =====================================================
-// CUSTOMER TESTIMONIAL SLIDER
-// =====================================================
-
-const customerSlider =
-    document.getElementById(
-        "customerSlider"
-    );
-
-const customerPrev =
-    document.getElementById(
-        "customerPrev"
-    );
-
-const customerNext =
-    document.getElementById(
-        "customerNext"
-    );
-
-
-if (
-    customerSlider &&
-    customerPrev &&
-    customerNext
-) {
-
-    customerNext.addEventListener(
-        "click",
-        function () {
-
-            customerSlider.scrollBy({
-                left: 400,
-                behavior: "smooth"
-            });
-
-        }
-    );
-
-
-    customerPrev.addEventListener(
-        "click",
-        function () {
-
-            customerSlider.scrollBy({
-                left: -400,
-                behavior: "smooth"
-            });
-
-        }
-    );
-
-}
-
-
-// =====================================================
-// NEWSLETTER
-// =====================================================
-
-const newsletterForm =
-    document.getElementById(
-        "newsletterForm"
-    );
-
-const newsletterEmail =
-    document.getElementById(
-        "newsletterEmail"
-    );
-
-
-if (newsletterForm) {
-
-    newsletterForm.addEventListener(
-        "submit",
-        function (event) {
+        button.addEventListener("click", function (event) {
 
             event.preventDefault();
+            event.stopPropagation();
 
-            const email =
-                newsletterEmail.value.trim();
+            const productId = this.dataset.productId;
 
-            if (email === "") {
+            const allProducts = [
+                ...newArrivals,
+                ...topSelling
+            ];
 
-                alert(
-                    "Please enter your email address."
+            const product = allProducts.find(
+                (item) => item.id === productId
+            );
+
+            if (!product) {
+                console.error(
+                    "Product not found:",
+                    productId
                 );
 
                 return;
-
             }
 
+
+            // Check that cart.js is loaded
+            if (typeof addProductToCart !== "function") {
+
+                console.error(
+                    "cart.js is not loaded. Load cart.js before index.js."
+                );
+
+                return;
+            }
+
+
+            // Add product
+            addProductToCart(product, 1);
+
+
+            // Update cart badge
+            if (typeof updateCartBadge === "function") {
+                updateCartBadge();
+            }
+
+
             alert(
-                "Thank you for subscribing!"
+                `${product.name} added to cart.`
             );
+        });
+    });
+}
 
-            newsletterEmail.value = "";
 
-        }
-    );
+// =====================================================
+// NEW ARRIVALS
+// =====================================================
 
+const productContainer =
+    document.getElementById("productContainer");
+
+const viewAllBtn =
+    document.getElementById("viewAllBtn");
+
+let showAllProducts = false;
+
+
+function displayNewArrivals() {
+
+    if (!productContainer) {
+        return;
+    }
+
+    const productsToShow = showAllProducts
+        ? newArrivals
+        : newArrivals.slice(0, 4);
+
+
+    productContainer.innerHTML =
+        productsToShow
+            .map(createProductCard)
+            .join("");
+
+
+    setupAddToCartButtons();
+
+
+    if (viewAllBtn) {
+
+        viewAllBtn.textContent =
+            showAllProducts
+                ? "Show Less"
+                : "View All";
+    }
+}
+
+
+displayNewArrivals();
+
+
+if (viewAllBtn) {
+
+    viewAllBtn.addEventListener("click", () => {
+
+        showAllProducts =
+            !showAllProducts;
+
+        displayNewArrivals();
+    });
+}
+
+
+// =====================================================
+// TOP SELLING
+// =====================================================
+
+const topSellingContainer =
+    document.getElementById("topSellingContainer");
+
+const topSellingViewBtn =
+    document.getElementById("topSellingViewBtn");
+
+let showAllTopSelling = false;
+
+
+function displayTopSelling() {
+
+    if (!topSellingContainer) {
+        return;
+    }
+
+    const productsToShow =
+        showAllTopSelling
+            ? topSelling
+            : topSelling.slice(0, 4);
+
+
+    topSellingContainer.innerHTML =
+        productsToShow
+            .map(createProductCard)
+            .join("");
+
+
+    setupAddToCartButtons();
+
+
+    if (topSellingViewBtn) {
+
+        topSellingViewBtn.textContent =
+            showAllTopSelling
+                ? "Show Less"
+                : "View All";
+    }
+}
+
+
+displayTopSelling();
+
+
+if (topSellingViewBtn) {
+
+    topSellingViewBtn.addEventListener("click", () => {
+
+        showAllTopSelling =
+            !showAllTopSelling;
+
+        displayTopSelling();
+    });
+}
+
+
+// =====================================================
+// CUSTOMER SLIDER
+// =====================================================
+
+const customerSlider =
+    document.getElementById("customerSlider");
+
+const customerPrev =
+    document.getElementById("customerPrev");
+
+const customerNext =
+    document.getElementById("customerNext");
+
+
+if (customerPrev && customerSlider) {
+
+    customerPrev.addEventListener("click", () => {
+
+        customerSlider.scrollBy({
+            left: -400,
+            behavior: "smooth"
+        });
+
+    });
+}
+
+
+if (customerNext && customerSlider) {
+
+    customerNext.addEventListener("click", () => {
+
+        customerSlider.scrollBy({
+            left: 400,
+            behavior: "smooth"
+        });
+
+    });
 }

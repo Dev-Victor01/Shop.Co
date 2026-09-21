@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
@@ -10,10 +12,15 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     >
+
     <link rel="stylesheet" href="./output.css">
+
     <title>Cart</title>
 </head>
-<body>
+
+<body class="bg-white text-black">
+
+    <!-- HEADER -->
     <header class="sticky top-0 z-50">
 
         <!-- Announcement -->
@@ -39,13 +46,13 @@
             </button>
 
             <!-- Logo -->
-            <div>
+            <a href="./index.html">
                 <img
-                    src="/src/asset/images/home/SHOP.CO.png"
+                    src="./asset/images/home/SHOP.CO.png"
                     alt="SHOP.CO logo"
                     class="w-32 md:w-auto"
                 >
-            </div>
+            </a>
 
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center gap-6">
@@ -53,26 +60,26 @@
                 <ul class="flex gap-4 items-center">
 
                     <li>
-                        <a href="#" class="hover:text-gray-500">
+                        <a href="./category.html" class="hover:text-gray-500">
                             Shop
                             <i class="fa-solid fa-chevron-down text-xs"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="hover:text-gray-500">
+                        <a href="./category.html" class="hover:text-gray-500">
                             On Sale
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="hover:text-gray-500">
+                        <a href="./index.html" class="hover:text-gray-500">
                             New Arrivals
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="hover:text-gray-500">
+                        <a href="./category.html" class="hover:text-gray-500">
                             Brands
                         </a>
                     </li>
@@ -87,6 +94,7 @@
                     <input
                         type="search"
                         placeholder="Search for products..."
+                        id="searchInput"
                         class="w-80 h-10 rounded-full border border-gray-300 py-2 pl-10 pr-4 bg-[#F0F0F0] outline-none"
                     >
 
@@ -102,25 +110,25 @@
                 <ul class="flex flex-col gap-4 p-5">
 
                     <li>
-                        <a href="#" class="block hover:text-gray-500">
+                        <a href="./category.html" class="block hover:text-gray-500">
                             Shop
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="block hover:text-gray-500">
+                        <a href="./category.html" class="block hover:text-gray-500">
                             On Sale
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="block hover:text-gray-500">
+                        <a href="./index.html" class="block hover:text-gray-500">
                             New Arrivals
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="block hover:text-gray-500">
+                        <a href="./category.html" class="block hover:text-gray-500">
                             Brands
                         </a>
                     </li>
@@ -131,15 +139,17 @@
             <!-- Icons -->
             <div class="flex items-center gap-3">
 
-                <div class="relative">
+                <!-- Cart -->
+                <a href="./cart.html" class="relative">
                     <i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+
                     <span
                         id="cart-count"
                         class="hidden absolute -top-2 -right-2 min-w-5 h-5 px-1.5 rounded-full bg-red-500 text-white text-[10px] font-bold inline-flex items-center justify-center"
                     >
                         0
                     </span>
-                </div>
+                </a>
 
                 <i class="fa-regular fa-circle-user text-xl md:text-2xl"></i>
 
@@ -149,98 +159,115 @@
 
     </header>
 
-    <section class="max-w-6xl mx-auto px-4 py-10">
-    <h1 class="text-4xl font-bold mb-8">YOUR CART</h1>
 
-    <div class="grid lg:grid-cols-3 gap-6">
+    <!-- CART -->
+    <main class="max-w-6xl mx-auto px-4 py-10">
 
-        <!-- Cart Items -->
-        <div class="lg:col-span-2 border rounded-2xl p-4">
+        <h1 class="text-4xl font-bold mb-8">
+            YOUR CART
+        </h1>
 
-            <!-- Item -->
-            <div class="flex justify-between items-center border-b pb-4 mb-4">
-                <div class="flex gap-4">
-                    <img src="./asset/images/product/image 1 (1).png"
-                        class="w-24 h-24 object-cover rounded-lg">
+        <div class="grid lg:grid-cols-3 gap-6">
 
-                    <div>
-                        <h3 class="font-bold">Gradient Graphic T-shirt</h3>
-                        <p class="text-sm text-gray-500">Size: Large</p>
-                        <p class="text-sm text-gray-500">Color: White</p>
-                        <p class="font-bold text-xl mt-2">$145</p>
+            <!-- CART ITEMS -->
+            <div
+                id="cart-items"
+                class="lg:col-span-2 border rounded-2xl p-4"
+            >
+                <!-- Products will be inserted by cart.js -->
+            </div>
+
+
+            <!-- ORDER SUMMARY -->
+            <div class="border rounded-2xl p-6 h-fit">
+
+                <h2 class="text-xl font-bold mb-6">
+                    Order Summary
+                </h2>
+
+                <div class="space-y-4">
+
+                    <div class="flex justify-between">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0</span>
                     </div>
+
+                    <div class="flex justify-between">
+                        <span>Discount</span>
+                        <span
+                            class="text-red-500"
+                            id="discount"
+                        >
+                            -$0
+                        </span>
+                    </div>
+
+                    <div class="flex justify-between">
+                        <span>Delivery Fee</span>
+                        <span id="delivery-fee">
+                            $15
+                        </span>
+                    </div>
+
+                    <hr>
+
+                    <div class="flex justify-between font-bold text-xl">
+                        <span>Total</span>
+
+                        <span id="total">
+                            $0
+                        </span>
+                    </div>
+
                 </div>
 
-                <div class="flex flex-col items-end gap-4">
-                    <button class="text-red-500 remove-btn">
-                        <i class="fa-solid fa-trash"></i>
+
+                <!-- PROMO -->
+                <div class="flex gap-2 mt-6">
+
+                    <input
+                        id="promo-code"
+                        type="text"
+                        placeholder="Add promo code"
+                        class="flex-1 bg-gray-100 rounded-full px-4 py-3 outline-none"
+                    >
+
+                    <button
+                        id="apply-promo"
+                        type="button"
+                        class="bg-black text-white px-6 rounded-full"
+                    >
+                        Apply
                     </button>
 
-                    <div
-                        class="flex items-center bg-gray-100 rounded-full px-4 py-2 gap-4">
-                        <button class="minus">-</button>
-                        <span class="qty">1</span>
-                        <button class="plus">+</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Order Summary -->
-        <div class="border rounded-2xl p-6 h-fit">
-            <h2 class="text-xl font-bold mb-6">Order Summary</h2>
-
-            <div class="space-y-4">
-                <div class="flex justify-between">
-                    <span>Subtotal</span>
-                    <span id="subtotal">$565</span>
                 </div>
 
-                <div class="flex justify-between">
-                    <span>Discount (-20%)</span>
-                    <span class="text-red-500" id="discount">-$113</span>
-                </div>
 
-                <div class="flex justify-between">
-                    <span>Delivery Fee</span>
-                    <span>$15</span>
-                </div>
-
-                <hr>
-
-                <div class="flex justify-between font-bold text-xl">
-                    <span>Total</span>
-                    <span id="total">$467</span>
-                </div>
-            </div>
-
-            <div class="flex gap-2 mt-6">
-                <input type="text"
-                    placeholder="Add promo code"
-                    class="flex-1 bg-gray-100 rounded-full px-4 py-3 outline-none">
-
+                <!-- CHECKOUT -->
                 <button
-                    class="bg-black text-white px-6 rounded-full">
-                    Apply
+                    id="checkout-btn"
+                    type="button"
+                    class="w-full bg-black text-white py-4 rounded-full mt-6"
+                >
+                    Go to Checkout →
                 </button>
+
             </div>
 
-            <button
-                class="w-full bg-black text-white py-4 rounded-full mt-6">
-                Go to Checkout →
-            </button>
         </div>
 
-    </div>
-    </section>
+    </main>
 
+
+    <!-- FOOTER -->
     <footer class="bg-[#f2f2f2] mt-20">
 
         <!-- Newsletter -->
         <div class="max-w-6xl mx-auto px-5">
 
-            <div class="bg-black rounded-2xl px-5 py-8 md:px-12 lg:px-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 relative -top-16">
+            <div
+                class="bg-black rounded-2xl px-5 py-8 md:px-12 lg:px-14 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 relative -top-16"
+            >
 
                 <h2 class="text-white text-3xl md:text-5xl leading-tight font-black">
                     STAY UPTO DATE ABOUT<br class="hidden sm:block">
@@ -299,19 +326,31 @@
 
                     <div class="flex items-center gap-3 mt-6">
 
-                        <a href="#" class="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs hover:bg-black hover:text-white transition">
+                        <a
+                            href="#"
+                            class="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs hover:bg-black hover:text-white transition"
+                        >
                             <i class="fa-brands fa-twitter"></i>
                         </a>
 
-                        <a href="#" class="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center text-xs">
+                        <a
+                            href="#"
+                            class="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center text-xs"
+                        >
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
 
-                        <a href="#" class="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs hover:bg-black hover:text-white transition">
+                        <a
+                            href="#"
+                            class="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs hover:bg-black hover:text-white transition"
+                        >
                             <i class="fa-brands fa-instagram"></i>
                         </a>
 
-                        <a href="#" class="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs hover:bg-black hover:text-white transition">
+                        <a
+                            href="#"
+                            class="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs hover:bg-black hover:text-white transition"
+                        >
                             <i class="fa-brands fa-github"></i>
                         </a>
 
@@ -329,10 +368,29 @@
 
                     <ul class="space-y-3 text-sm text-gray-500">
 
-                        <li><a href="#" class="hover:text-black">About</a></li>
-                        <li><a href="#" class="hover:text-black">Features</a></li>
-                        <li><a href="#" class="hover:text-black">Works</a></li>
-                        <li><a href="#" class="hover:text-black">Career</a></li>
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Features
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Works
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Career
+                            </a>
+                        </li>
 
                     </ul>
 
@@ -348,10 +406,29 @@
 
                     <ul class="space-y-3 text-sm text-gray-500">
 
-                        <li><a href="#" class="hover:text-black">Customer Support</a></li>
-                        <li><a href="#" class="hover:text-black">Delivery Details</a></li>
-                        <li><a href="#" class="hover:text-black">Terms & Conditions</a></li>
-                        <li><a href="#" class="hover:text-black">Privacy Policy</a></li>
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Customer Support
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Delivery Details
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Terms & Conditions
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Privacy Policy
+                            </a>
+                        </li>
 
                     </ul>
 
@@ -367,10 +444,29 @@
 
                     <ul class="space-y-3 text-sm text-gray-500">
 
-                        <li><a href="#" class="hover:text-black">Account</a></li>
-                        <li><a href="#" class="hover:text-black">Manage Deliveries</a></li>
-                        <li><a href="#" class="hover:text-black">Orders</a></li>
-                        <li><a href="#" class="hover:text-black">Payment</a></li>
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Account
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Manage Deliveries
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Orders
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Payment
+                            </a>
+                        </li>
 
                     </ul>
 
@@ -386,10 +482,29 @@
 
                     <ul class="space-y-3 text-sm text-gray-500">
 
-                        <li><a href="#" class="hover:text-black">Free eBook</a></li>
-                        <li><a href="#" class="hover:text-black">Development Tutorial</a></li>
-                        <li><a href="#" class="hover:text-black">How to - Blog</a></li>
-                        <li><a href="#" class="hover:text-black">Youtube Playlist</a></li>
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Free eBook
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Development Tutorial
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                How to - Blog
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="hover:text-black">
+                                Youtube Playlist
+                            </a>
+                        </li>
 
                     </ul>
 
@@ -399,7 +514,9 @@
 
 
             <!-- Bottom -->
-            <div class="border-t border-gray-300 mt-8 pt-4 flex flex-col items-center lg:flex-row lg:justify-between gap-4">
+            <div
+                class="border-t border-gray-300 mt-8 pt-4 flex flex-col items-center lg:flex-row lg:justify-between gap-4"
+            >
 
                 <p class="text-gray-500 text-xs text-center">
                     Shop.co © 2000-2023, All Rights Reserved
@@ -416,7 +533,7 @@
                         <span class="text-yellow-500">●</span>
                     </div>
 
-                    <div class="bg-white rounded-md px-2 py-1.5 text-[9px] font-bold text-blue-700">
+                    <div class="bg-white rounded-md px-2 py-1.5 text-[9px] font-bold">
                         PayPal
                     </div>
 
@@ -436,6 +553,10 @@
 
     </footer>
 
+
+    <!-- CART JAVASCRIPT -->
     <script src="./cart.js"></script>
+    <script src="./site.js"></script>
+
 </body>
 </html>

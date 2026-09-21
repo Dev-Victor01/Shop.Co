@@ -39,13 +39,13 @@
             </button>
 
             <!-- Logo -->
-            <div>
+            <a href="./index.html" aria-label="SHOP.CO home">
                 <img
-                    src="/src/asset/images/home/SHOP.CO.png"
+                    src="./asset/images/home/SHOP.CO.png"
                     alt="SHOP.CO logo"
                     class="w-32 md:w-auto"
                 >
-            </div>
+            </a>
 
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center gap-6">
@@ -53,26 +53,26 @@
                 <ul class="flex gap-4 items-center">
 
                     <li>
-                        <a href="#" class="hover:text-gray-500">
+                        <a href="./category.html" class="hover:text-gray-500">
                             Shop
                             <i class="fa-solid fa-chevron-down text-xs"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="hover:text-gray-500">
+                        <a href="./category.html" class="hover:text-gray-500">
                             On Sale
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="hover:text-gray-500">
+                        <a href="./index.html" class="hover:text-gray-500">
                             New Arrivals
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="hover:text-gray-500">
+                        <a href="./category.html" class="hover:text-gray-500">
                             Brands
                         </a>
                     </li>
@@ -87,6 +87,7 @@
                     <input
                         type="search"
                         placeholder="Search for products..."
+                        id="searchInput"
                         class="w-80 h-10 rounded-full border border-gray-300 py-2 pl-10 pr-4 bg-[#F0F0F0] outline-none"
                     >
 
@@ -102,25 +103,25 @@
                 <ul class="flex flex-col gap-4 p-5">
 
                     <li>
-                        <a href="#" class="block hover:text-gray-500">
+                        <a href="./category.html" class="block hover:text-gray-500">
                             Shop
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="block hover:text-gray-500">
+                        <a href="./category.html" class="block hover:text-gray-500">
                             On Sale
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="block hover:text-gray-500">
+                        <a href="./index.html" class="block hover:text-gray-500">
                             New Arrivals
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="block hover:text-gray-500">
+                        <a href="./category.html" class="block hover:text-gray-500">
                             Brands
                         </a>
                     </li>
@@ -131,15 +132,20 @@
             <!-- Icons -->
             <div class="flex items-center gap-3">
 
-                <div class="relative">
+                <a
+                    href="./cart.html"
+                    class="relative"
+                    aria-label="Shopping cart"
+                >
                     <i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+
                     <span
                         id="cart-count"
                         class="hidden absolute -top-2 -right-2 min-w-5 h-5 px-1.5 rounded-full bg-red-500 text-white text-[10px] font-bold inline-flex items-center justify-center"
                     >
                         0
                     </span>
-                </div>
+                </a>
 
                 <i class="fa-regular fa-circle-user text-xl md:text-2xl"></i>
 
@@ -153,9 +159,7 @@
          <nav class="flex items-center gap-3 px-8 py-6 text-sm">
 
             <!-- Home -->
-            <a href="#" class="text-gray-500 hover:text-black transition">
-                Home
-            </a>
+            <a href="./index.html" class="text-gray-500 hover:text-black transition">Home</a>
 
             <!-- Arrow -->
             <svg
@@ -173,9 +177,7 @@
             </svg>
 
             <!-- Shop -->
-            <a href="#" class="text-gray-500 hover:text-black transition">
-                Shop
-            </a>
+            <a href="./category.html" class="text-gray-500 hover:text-black transition">Shop</a>
 
             <!-- Arrow -->
             <svg
@@ -193,9 +195,7 @@
             </svg>
 
             <!-- Men -->
-            <a href="#" class="text-gray-500 hover:text-black transition">
-                Men
-            </a>
+            <a href="./category.html" class="text-gray-500 hover:text-black transition">Men</a>
 
             <!-- Arrow -->
             <svg
@@ -219,238 +219,200 @@
 
         </nav>
     </section>
-    <main class="max-w-6xl mx-auto px-5 md:px-8 py-6">
+   <main class="max-w-6xl mx-auto px-5 md:px-8 py-6">
+
     <!-- ================= PRODUCT SECTION ================= -->
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
 
-            <!-- ================= LEFT: IMAGE GALLERY ================= -->
-            <div class="flex flex-col-reverse md:flex-row gap-3">
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
 
-                <!-- THUMBNAILS -->
-                     <div class="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible">
+        <!-- ================= LEFT: IMAGE GALLERY ================= -->
 
-                <!-- Thumbnail 1 -->
-                    <button
-                        onclick="changeImage('./asset/images/product/image1.png', this)"
-                        class="thumbnail border-2 border-black rounded-2xl overflow-hidden w-24 h-24 md:w-32 md:h-32 shrink-0"
-                    >
-                        <img
-                        src="./asset/images/product/image 1 (1).png"
-                        alt="Product image 1"
-                        class="w-full h-full object-cover"
-                        >
-                    </button>
+        <div class="flex flex-col-reverse md:flex-row gap-3">
+
+            <!-- THUMBNAILS -->
+
+            <div
+                id="thumbnailContainer"
+                class="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible"
+            >
+            </div>
 
 
-                <!-- Thumbnail 2 -->
-                    <button
-                        onclick="changeImage('./asset/images/product/image2.png', this)"
-                        class="thumbnail border-2 border-transparent bg-gray-100 rounded-2xl overflow-hidden w-24 h-24 md:w-32 md:h-32 shrink-0"
-                    >
-                        <img
-                        src="./asset/images/product/image 5 (1).png"
-                        alt="Product image 2"
-                        class="w-full h-full object-cover"
-                        >
-                    </button>
+            <!-- MAIN IMAGE -->
+
+            <div
+                class="bg-[#f2f0f0] rounded-2xl flex items-center justify-center w-full h-[420px] md:h-[520px] overflow-hidden"
+            >
+
+                <img
+                    id="mainProductImage"
+                    src=""
+                    alt="Product"
+                    class="w-full h-full object-contain"
+                >
+
+            </div>
+
+        </div>
 
 
-                <!-- Thumbnail 3 -->
-                    <button
-                        onclick="changeImage('./asset/images/product/image3.png', this)"
-                        class="thumbnail border-2 border-transparent bg-gray-100 rounded-2xl overflow-hidden w-24 h-24 md:w-32 md:h-32 shrink-0"
-                    >
-                        <img
-                        src="./asset/images/product/image 6 (1).png"
-                        alt="Product image 3"
-                        class="w-full h-full object-contain"
-                        >
-                    </button>
+        <!-- ================= RIGHT: PRODUCT INFO ================= -->
 
+        <div>
+
+            <!-- PRODUCT TITLE -->
+
+            <h1
+                id="product-title"
+                class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight uppercase mb-3"
+            >
+                Loading...
+            </h1>
+
+
+            <!-- RATING -->
+
+            <div class="flex items-center gap-2 mb-4">
+
+                <div
+                    id="product-rating"
+                    class="flex items-center text-yellow-400 text-xl"
+                >
                 </div>
 
-
-                <!-- MAIN IMAGE -->
-                    <div class="bg-[#f2f0f0] rounded-2xl flex items-center justify-center w-full h-[420px] md:h-[520px] overflow-hidden">
-                    <img
-                        id="mainProductImage"
-                        src="./asset/images/product/image 1 (1).png"
-                        alt="One Life Graphic T-Shirt"
-                        class="w-full h-full object-contain"
-                    >
-                    </div>
+                <span
+                    id="product-rating-number"
+                    class="text-sm text-gray-600"
+                >
+                    0/5
+                </span>
 
             </div>
 
 
-            <!-- ================= RIGHT: PRODUCT INFO ================= -->
-            <div>
+            <!-- PRICE -->
 
-                <!-- PRODUCT TITLE -->
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight uppercase mb-3">
-                ONE LIFE GRAPHIC T-SHIRT
-                </h1>
+            <div class="flex items-center gap-3 mb-4">
 
-
-                <!-- RATING -->
-                <div class="flex items-center gap-2 mb-4">
-
-                    <div class="flex text-yellow-400 text-xl">
-                        ★★★★
-                    </div>
-
-                    <span class="text-sm text-gray-600">
-                        4.5/5
-                    </span>
-
-                </div>
-
-
-                <!-- PRICE -->
-                <div class="flex items-center gap-3 mb-4">
-
-                <span class="text-3xl font-bold">
-                    $260
+                <span
+                    id="product-price"
+                    class="text-3xl font-bold"
+                >
+                    $0
                 </span>
 
-                <span class="text-2xl text-gray-400 line-through">
-                    $300
+                <span
+                    id="product-old-price"
+                    class="text-2xl text-gray-400 line-through hidden"
+                >
                 </span>
 
-                <span class="bg-red-100 text-red-500 px-3 py-1 rounded-full text-sm">
-                    -40%
+                <span
+                    id="product-discount"
+                    class="bg-red-100 text-red-500 px-3 py-1 rounded-full text-sm hidden"
+                >
                 </span>
 
-                </div>
+            </div>
 
 
-                <!-- DESCRIPTION -->
-                <p class="text-sm md:text-base text-gray-500 leading-relaxed pb-5 border-b border-gray-200">
-                This graphic t-shirt which is perfect for any occasion.
-                Crafted from a soft and breathable fabric, it offers superior
-                comfort and style.
-                </p>
+            <!-- DESCRIPTION -->
+
+            <p
+                id="product-description"
+                class="text-sm md:text-base text-gray-500 leading-relaxed pb-5 border-b border-gray-200"
+            >
+                Loading product description...
+            </p>
 
 
-                <!-- ================= COLORS ================= -->
-                <div class="py-5 border-b border-gray-200">
+            <!-- COLORS -->
+
+            <div class="py-5 border-b border-gray-200">
 
                 <p class="text-sm text-gray-500 mb-3">
                     Select Colors
                 </p>
 
-                <div class="flex items-center gap-3">
-
-                    <!-- Brown -->
-                    <button
-                    onclick="selectColor(this)"
-                    class="color-btn w-8 h-8 rounded-full bg-[#514a38] border-2 border-white ring-2 ring-black flex items-center justify-center"
-                    >
-                    <i data-lucide="check" class="w-4 h-4 text-white"></i>
-                    </button>
-
-
-                    <!-- Green -->
-                    <button
-                    onclick="selectColor(this)"
-                    class="color-btn w-8 h-8 rounded-full bg-[#315550] border-2 border-transparent"
-                    ></button>
-
-
-                    <!-- Navy -->
-                    <button
-                    onclick="selectColor(this)"
-                    class="color-btn w-8 h-8 rounded-full bg-[#303451] border-2 border-transparent"
-                    ></button>
-
+                <div
+                    id="color-container"
+                    class="flex items-center gap-3"
+                >
                 </div>
 
-                </div>
+            </div>
 
 
-                <!-- ================= SIZES ================= -->
-                <div class="py-5 border-b border-gray-200">
+            <!-- SIZES -->
+
+            <div class="py-5 border-b border-gray-200">
 
                 <p class="text-sm text-gray-500 mb-3">
                     Choose Size
                 </p>
 
-                <div class="flex flex-wrap gap-2">
-
-                    <button
-                    onclick="selectSize(this)"
-                    class="size-btn px-6 py-3 rounded-full bg-gray-100 text-sm text-gray-600"
-                    >
-                    Small
-                    </button>
-
-                    <button
-                    onclick="selectSize(this)"
-                    class="size-btn px-6 py-3 rounded-full bg-gray-100 text-sm text-gray-600"
-                    >
-                    Medium
-                    </button>
-
-                    <button
-                    onclick="selectSize(this)"
-                    class="size-btn px-7 py-3 rounded-full bg-black text-white text-sm"
-                    >
-                    Large
-                    </button>
-
-                    <button
-                    onclick="selectSize(this)"
-                    class="size-btn px-6 py-3 rounded-full bg-gray-100 text-sm text-gray-600"
-                    >
-                    X-Large
-                    </button>
-
+                <div
+                    id="size-container"
+                    class="flex flex-wrap gap-2"
+                >
                 </div>
 
-                </div>
+            </div>
 
 
-                <!-- ================= CART CONTROLS ================= -->
-                <div class="flex items-center gap-4 pt-5">
+            <!-- CART -->
 
-                <!-- Quantity -->
-                <div class="flex items-center justify-between bg-gray-100 rounded-full w-36 px-5 py-3">
+            <div class="flex items-center gap-4 pt-5">
+
+                <!-- QUANTITY -->
+
+                <div
+                    class="flex items-center justify-between bg-gray-100 rounded-full w-36 px-5 py-3"
+                >
 
                     <button
-                    onclick="decreaseQuantity()"
-                    class="text-xl hover:text-gray-500"
+                        type="button"
+                        onclick="decreaseQuantity()"
+                        class="text-xl hover:text-gray-500"
                     >
-                    −
+                        −
                     </button>
 
-                    <span id="quantity" class="text-sm">
-                    1
+                    <span
+                        id="quantity"
+                        class="text-sm"
+                    >
+                        1
                     </span>
 
                     <button
-                    onclick="increaseQuantity()"
-                    class="text-xl hover:text-gray-500"
+                        type="button"
+                        onclick="increaseQuantity()"
+                        class="text-xl hover:text-gray-500"
                     >
-                    +
+                        +
                     </button>
 
                 </div>
 
 
-                <!-- Add To Cart -->
+                <!-- ADD TO CART -->
+
                 <button
+                    type="button"
                     onclick="addToCart()"
                     class="flex-1 bg-black text-white rounded-full py-3 px-6 text-sm hover:bg-gray-800 transition"
                 >
                     Add to Cart
                 </button>
 
-                </div>
-
             </div>
 
-        </section>
-    </main>
+        </div>
+
+    </section>
+
+</main>
     <section class="max-w-[1200px] mx-auto px-5 sm:px-8">
 
         <!-- =========================
@@ -1064,7 +1026,8 @@
         </div>
 
     </footer>
-    <script src="./index.js"></script>
-    <script src="/src/details.js"></script>
+    <script src="./cart.js"></script>
+    <script src="./details.js"></script>
+    <script src="./site.js"></script>
 </body>
 </html>
